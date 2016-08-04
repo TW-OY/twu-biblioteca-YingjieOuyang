@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.sun.org.apache.xerces.internal.util.PropertyState;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,14 +8,12 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class BibliotecaAppTest {
-    BibliotecaApp BibliotecaAppTestable = new BibliotecaApp();
-
+public class BibliotecaUtilityTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private BibliotecaApp bibliotecaAppTestable = new BibliotecaApp();
+    BibliotecaUtility bibliotecaUtilityTestable = new BibliotecaUtility();
 
     @Before
     public void setUpOutStream(){
@@ -29,7 +28,7 @@ public class BibliotecaAppTest {
     @Test
     public void showWelcomeMessageTest() throws Exception {
         String expectResult = "Welcome to Biblioteca";
-        bibliotecaAppTestable.showWelcomeMessage();
+        bibliotecaUtilityTestable.showWelcomeMessage();
         assertThat(outContent.toString(), is(expectResult));
     }
 
