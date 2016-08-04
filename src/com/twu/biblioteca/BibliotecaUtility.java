@@ -22,5 +22,11 @@ public class BibliotecaUtility {
         }
     }
 
+    public void showAllBookDetails() {
+        for(Book book : bookList) {
+            System.out.println(book.toString());
+        }
+    }
+
 
 }

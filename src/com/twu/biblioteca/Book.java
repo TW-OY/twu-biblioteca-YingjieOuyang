@@ -23,5 +23,10 @@ public class Book {
         return author;
     }
 
+    @Override
+    public String toString() {
+        return name + " | " + author + " | " + publishYear;
+    }
+
 
 }
