@@ -36,4 +36,13 @@ public class BibliotecaUtility {
         }
     }
 
+    public void showErrorMessage(String consoleInput) {
+        for(String option : menu) {
+            if(option.equals(consoleInput)) {
+                return;
+            }
+        }
+        System.out.println("Select a valid option!");
+    }
+
 }

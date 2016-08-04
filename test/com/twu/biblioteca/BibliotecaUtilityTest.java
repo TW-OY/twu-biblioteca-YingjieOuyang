@@ -56,7 +56,7 @@ public class BibliotecaUtilityTest {
     @Test
     public void shouldSeeErrorMessage() {
         String expectResult = "Select a valid option!\n";
-        bibliotecaUtilityTestable.showErrorMessage();
+        bibliotecaUtilityTestable.showErrorMessage("testString");
         assertThat(outContent.toString(), is(expectResult));
     }
 
