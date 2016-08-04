@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class BibliotecaUtility {
     private ArrayList<Book> bookList = new ArrayList<>();
+    private ArrayList<String> menu= new ArrayList<>();
 
     public BibliotecaUtility() {
         bookList.add(new Book("Harry potter1", "J. K. Rowling", "1995"));
         bookList.add(new Book("Harry potter2", "J. K. Rowling", "1996"));
         bookList.add(new Book("Harry potter3", "J. K. Rowling", "1997"));
+        menu.add("List Books");
     }
 
 
@@ -29,7 +31,9 @@ public class BibliotecaUtility {
     }
 
     public void showMainMenu() {
-        System.out.println("List Books");
+        for(String option : menu) {
+            System.out.println(option);
+        }
     }
 
 }
