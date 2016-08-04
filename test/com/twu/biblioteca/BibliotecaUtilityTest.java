@@ -39,4 +39,13 @@ public class BibliotecaUtilityTest {
         assertThat(outContent.toString(), is(expectResult));
     }
 
+    @Test
+    public void showAllBookDetailsTest(){
+        String expectResult = "Harry potter1 | J. K. Rowling | 1995\nHarry potter2 | J. K. Rowling | 1996\nHarry potter3 | J. K. Rowling | 1997\n";
+        bibliotecaUtilityTestable.showAllBookDetails();
+        assertThat(outContent.toString(), is(expectResult));
+    }
+
+
+
 }
