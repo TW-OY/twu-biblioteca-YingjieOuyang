@@ -46,6 +46,10 @@ public class BibliotecaUtilityTest {
         assertThat(outContent.toString(), is(expectResult));
     }
 
-
-
+    @Test
+    public void showMainMenuTest() {
+        String expectResult = "List Books\n";
+        bibliotecaUtilityTestable.showMainMenu();
+        assertThat(outContent.toString(), is(expectResult));
+    }
 }

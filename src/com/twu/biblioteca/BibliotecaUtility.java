@@ -27,6 +27,4 @@ public class BibliotecaUtility {
             System.out.println(book.toString());
         }
     }
-
-
 }
