@@ -35,7 +35,7 @@ public class BibliotecaUtilityTest {
     @Test
     public void showListofBooksTest() {
         String expectResult = "Harry potter1\nHarry potter2\nHarry potter3\n";
-        bibliotecaAppTestable.showListOfBooks();
+        bibliotecaUtilityTestable.showListOfBooks();
         assertThat(outContent.toString(), is(expectResult));
     }
 
