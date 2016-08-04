@@ -26,30 +26,31 @@ public class BibliotecaUtilityTest {
     }
 
     @Test
-    public void showWelcomeMessageTest() throws Exception {
+    public void shouldSeeWelcomeMessage() {
         String expectResult = "Welcome to Biblioteca";
         bibliotecaUtilityTestable.showWelcomeMessage();
         assertThat(outContent.toString(), is(expectResult));
     }
 
     @Test
-    public void showListofBooksTest() {
+    public void shouldSeeAllBooksName() {
         String expectResult = "Harry potter1\nHarry potter2\nHarry potter3\n";
         bibliotecaUtilityTestable.showListOfBooks();
         assertThat(outContent.toString(), is(expectResult));
     }
 
     @Test
-    public void showAllBookDetailsTest(){
+    public void shouldSeeAllBooksDetails(){
         String expectResult = "Harry potter1 | J. K. Rowling | 1995\nHarry potter2 | J. K. Rowling | 1996\nHarry potter3 | J. K. Rowling | 1997\n";
         bibliotecaUtilityTestable.showAllBookDetails();
         assertThat(outContent.toString(), is(expectResult));
     }
 
     @Test
-    public void showMainMenuTest() {
+    public void shouldSeeMainMenu() {
         String expectResult = "List Books\n";
         bibliotecaUtilityTestable.showMainMenu();
         assertThat(outContent.toString(), is(expectResult));
     }
+
 }
