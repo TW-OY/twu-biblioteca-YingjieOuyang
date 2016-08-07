@@ -65,11 +65,11 @@ public class BibliotecaUtilityTest {
     }
 
     @Test
-    public void shouldRemoveThisBookAfterCheckout() {
+    public void shouldRemoveThisBookFromAvailableBookListAfterCheckout() {
         String bookName = "Harry potter1";
         bibliotecaUtilityTestable.checkout(bookName);
-        ArrayList<Book> bookList = bibliotecaUtilityTestable.getAvailableBookList();
-        assertThat(bookList.toString(), not(containsString("Harry potter1")));
+        ArrayList<Book> availableBookList = bibliotecaUtilityTestable.getAvailableBookList();
+        assertThat(availableBookList.toString(), not(containsString("Harry potter1")));
     }
 
     @Test
@@ -87,13 +87,16 @@ public class BibliotecaUtilityTest {
     }
 
     @Test
-    public void shouldAddTheBookAfterItIsReturned() {
+    public void shouldAddTheBookToTheAvailableBookListWhenTheBookIsReturned() {
         String bookName = "Harry potter1";
-        ArrayList<Book> bookList = bibliotecaUtilityTestable.getAvailableBookList();
+        ArrayList<Book> availableBookList = bibliotecaUtilityTestable.getAvailableBookList();
+        ArrayList<Book> checkedOutBookList = bibliotecaUtilityTestable.getCheckedOutBookList();
         bibliotecaUtilityTestable.checkout(bookName);
-        assertThat(bookList.toString(), not(containsString("Harry potter1")));
+        assertThat(availableBookList.toString(), not(containsString("Harry potter1")));
+        assertThat(checkedOutBookList.toString(), containsString("Harry potter1"));
         bibliotecaUtilityTestable.returnBook(bookName);
-        assertThat(bookList.toString(), containsString("Harry potter1"));
+        assertThat(checkedOutBookList.toString(), not(containsString("Harry potter1")));
+        assertThat(availableBookList.toString(), containsString("Harry potter1"));
     }
 
 
