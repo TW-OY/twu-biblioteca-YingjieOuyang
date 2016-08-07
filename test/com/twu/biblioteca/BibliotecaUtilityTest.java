@@ -74,14 +74,14 @@ public class BibliotecaUtilityTest {
 
     @Test
     public void shouldShowSuccessfulMessageAfterCheckout() {
-        String expectMessage = "Thank you! Enjoy the book";
+        String expectMessage = "Thank you! Enjoy the book\n";
         bibliotecaUtilityTestable.checkout("Harry potter1");
         assertThat(outContent.toString(), is(expectMessage));
     }
 
     @Test
     public void shouldPrintUnsuccessfulMessageAfterFailedCheckout() {
-        String expectMessage = "That book is not available.";
+        String expectMessage = "That book is not available.\n";
         bibliotecaUtilityTestable.checkout("UnexsitBook");
         assertThat(outContent.toString(), is(expectMessage));
     }
@@ -102,9 +102,9 @@ public class BibliotecaUtilityTest {
     @Test
     public void shouldShowSuccessfulReturnMessageAfterSuccessfulReturn() {
         String bookName = "Harry potter1";
-        String expectedMessage = "Thank you for returning the book.";
+        String expectedMessage = "Thank you for returning the book.\n";
         bibliotecaUtilityTestable.checkout(bookName);
         bibliotecaUtilityTestable.returnBook(bookName);
-        assertThat(outContent.toString(), is(expectedMessage));
+        assertThat(outContent.toString(), containsString(expectedMessage));
     }
 }

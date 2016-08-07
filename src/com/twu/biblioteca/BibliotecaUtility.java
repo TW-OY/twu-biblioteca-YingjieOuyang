@@ -60,11 +60,11 @@ public class BibliotecaUtility {
             if(book.getName() == bookname) {
                 availableBookList.remove(book);
                 checkedOutBookList.add(book);
-                System.out.print("Thank you! Enjoy the book");
+                System.out.println("Thank you! Enjoy the book");
                 return;
             }
         }
-        System.out.print("That book is not available.");
+        System.out.println("That book is not available.");
     }
 
     public void returnBook(String bookName) {
@@ -72,6 +72,7 @@ public class BibliotecaUtility {
            if(book.getName() == bookName) {
                checkedOutBookList.remove(book);
                availableBookList.add(book);
+               System.out.println("Thank you for returning the book.");
                return;
            }
         }
