@@ -99,5 +99,12 @@ public class BibliotecaUtilityTest {
         assertThat(availableBookList.toString(), containsString("Harry potter1"));
     }
 
-
+    @Test
+    public void shouldShowSuccessfulReturnMessageAfterSuccessfulReturn() {
+        String bookName = "Harry potter1";
+        String expectedMessage = "Thank you for returning the book.";
+        bibliotecaUtilityTestable.checkout(bookName);
+        bibliotecaUtilityTestable.returnBook(bookName);
+        assertThat(outContent.toString(), is(expectedMessage));
+    }
 }
