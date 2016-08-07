@@ -51,5 +51,11 @@ public class BibliotecaUtility {
     }
 
     public void checkout(String bookname) {
+        for(Book book : bookList) {
+            if(book.getName() == bookname) {
+                bookList.remove(book);
+                return;
+            }
+        }
     }
 }
