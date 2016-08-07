@@ -107,4 +107,12 @@ public class BibliotecaUtilityTest {
         bibliotecaUtilityTestable.returnBook(bookName);
         assertThat(outContent.toString(), containsString(expectedMessage));
     }
+
+    @Test
+    public void shouldShowUnSuccessfulReturnMessageAfterFailedReturn() {
+        String bookName = "TestBook";
+        String expectedMessage = "That is not a valid book to return.";
+        bibliotecaUtilityTestable.returnBook(bookName);
+        assertThat(outContent.toString(), containsString(expectedMessage));
+    }
 }
