@@ -60,5 +60,6 @@ public class BibliotecaUtility {
     }
 
     public void showCheckedOutMessage() {
+        System.out.print("Thank you! Enjoy the book");
     }
 }
