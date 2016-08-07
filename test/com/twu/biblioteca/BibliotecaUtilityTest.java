@@ -1,14 +1,19 @@
 package com.twu.biblioteca;
 
-import com.sun.org.apache.xerces.internal.util.PropertyState;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.matchers.JUnitMatchers;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
 
 public class BibliotecaUtilityTest {
@@ -58,6 +63,14 @@ public class BibliotecaUtilityTest {
         String expectResult = "Select a valid option!\n";
         bibliotecaUtilityTestable.showErrorMessage("testString");
         assertThat(outContent.toString(), is(expectResult));
+    }
+
+    @Test
+    public void shouldRemoveThisBookAfterCheckout() {
+        String bookname = "Harry potter1";
+        bibliotecaUtilityTestable.checkout(bookname);
+        ArrayList<Book> bookList = bibliotecaUtilityTestable.getBookList();
+        assertThat(bookList.toString(), not(containsString("Harry potter1")));
     }
 
 }

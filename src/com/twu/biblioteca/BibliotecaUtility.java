@@ -3,8 +3,13 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class BibliotecaUtility {
+
     private ArrayList<Book> bookList = new ArrayList<>();
     private ArrayList<String> menu= new ArrayList<>();
+
+    public ArrayList<Book> getBookList() {
+        return bookList;
+    }
 
     public BibliotecaUtility() {
         bookList.add(new Book("Harry potter1", "J. K. Rowling", "1995"));
@@ -45,4 +50,6 @@ public class BibliotecaUtility {
         System.out.println("Select a valid option!");
     }
 
+    public void checkout(String bookname) {
+    }
 }
