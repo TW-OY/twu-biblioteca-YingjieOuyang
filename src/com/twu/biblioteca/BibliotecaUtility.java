@@ -64,5 +64,6 @@ public class BibliotecaUtility {
     }
 
     public void showFailedCheckOutMessage() {
+        System.out.print("That book is not available.");
     }
 }
