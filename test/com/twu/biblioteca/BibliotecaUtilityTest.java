@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.core.Is;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,6 +73,13 @@ public class BibliotecaUtilityTest {
         bibliotecaUtilityTestable.checkout(bookname);
         ArrayList<Book> bookList = bibliotecaUtilityTestable.getBookList();
         assertThat(bookList.toString(), not(containsString("Harry potter1")));
+    }
+
+    @Test
+    public void shouldShowSuccessfulMessageAfterCheckout() {
+        String expectMessage = "Thank you! Enjoy the book";
+        bibliotecaUtilityTestable.showCheckedOutMessage();
+        assertThat(outContent.toString(), is(expectMessage));
     }
 
 }

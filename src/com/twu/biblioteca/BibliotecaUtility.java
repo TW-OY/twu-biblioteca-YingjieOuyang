@@ -58,4 +58,7 @@ public class BibliotecaUtility {
             }
         }
     }
+
+    public void showCheckedOutMessage() {
+    }
 }
