@@ -4,17 +4,22 @@ import java.util.ArrayList;
 
 public class BibliotecaUtility {
 
-    private ArrayList<Book> bookList = new ArrayList<>();
+    private ArrayList<Book> availableBookList = new ArrayList<>();
+    private ArrayList<Book> checkedOutBookList = new ArrayList<>();
     private ArrayList<String> menu= new ArrayList<>();
 
-    public ArrayList<Book> getBookList() {
-        return bookList;
+    public ArrayList<Book> getCheckedOutBookList() {
+        return checkedOutBookList;
+    }
+
+    public ArrayList<Book> getAvailableBookList() {
+        return availableBookList;
     }
 
     public BibliotecaUtility() {
-        bookList.add(new Book("Harry potter1", "J. K. Rowling", "1995"));
-        bookList.add(new Book("Harry potter2", "J. K. Rowling", "1996"));
-        bookList.add(new Book("Harry potter3", "J. K. Rowling", "1997"));
+        availableBookList.add(new Book("Harry potter1", "J. K. Rowling", "1995"));
+        availableBookList.add(new Book("Harry potter2", "J. K. Rowling", "1996"));
+        availableBookList.add(new Book("Harry potter3", "J. K. Rowling", "1997"));
         menu.add("List Books");
     }
 
@@ -24,13 +29,13 @@ public class BibliotecaUtility {
     }
 
     public void showListOfBooks() {
-        for(Book book : bookList) {
+        for(Book book : availableBookList) {
             System.out.println(book.getName());
         }
     }
 
     public void showAllBookDetails() {
-        for(Book book : bookList) {
+        for(Book book : availableBookList) {
             System.out.println(book.toString());
         }
     }
@@ -51,9 +56,10 @@ public class BibliotecaUtility {
     }
 
     public void checkout(String bookname) {
-        for(Book book : bookList) {
+        for(Book book : availableBookList) {
             if(book.getName() == bookname) {
-                bookList.remove(book);
+                availableBookList.remove(book);
+                checkedOutBookList.add(book);
                 System.out.print("Thank you! Enjoy the book");
                 return;
             }
@@ -62,6 +68,12 @@ public class BibliotecaUtility {
     }
 
     public void returnBook(String bookName) {
-
+        for(Book book : checkedOutBookList) {
+           if(book.getName() == bookName) {
+               checkedOutBookList.remove(book);
+               availableBookList.add(book);
+               return;
+           }
+        }
     }
 }

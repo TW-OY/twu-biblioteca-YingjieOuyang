@@ -1,25 +1,17 @@
 package com.twu.biblioteca;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.core.Is;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.matchers.JUnitMatchers;
-import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class BibliotecaUtilityTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -76,7 +68,7 @@ public class BibliotecaUtilityTest {
     public void shouldRemoveThisBookAfterCheckout() {
         String bookName = "Harry potter1";
         bibliotecaUtilityTestable.checkout(bookName);
-        ArrayList<Book> bookList = bibliotecaUtilityTestable.getBookList();
+        ArrayList<Book> bookList = bibliotecaUtilityTestable.getAvailableBookList();
         assertThat(bookList.toString(), not(containsString("Harry potter1")));
     }
 
@@ -97,7 +89,7 @@ public class BibliotecaUtilityTest {
     @Test
     public void shouldAddTheBookAfterItIsReturned() {
         String bookName = "Harry potter1";
-        ArrayList<Book> bookList = bibliotecaUtilityTestable.getBookList();
+        ArrayList<Book> bookList = bibliotecaUtilityTestable.getAvailableBookList();
         bibliotecaUtilityTestable.checkout(bookName);
         assertThat(bookList.toString(), not(containsString("Harry potter1")));
         bibliotecaUtilityTestable.returnBook(bookName);
