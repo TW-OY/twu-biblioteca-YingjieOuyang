@@ -61,4 +61,7 @@ public class BibliotecaUtility {
         System.out.print("That book is not available.");
     }
 
+    public void returnBook(String bookName) {
+
+    }
 }

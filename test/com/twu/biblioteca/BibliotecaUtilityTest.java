@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.matchers.JUnitMatchers;
+import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -17,6 +18,8 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class BibliotecaUtilityTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -71,8 +74,8 @@ public class BibliotecaUtilityTest {
 
     @Test
     public void shouldRemoveThisBookAfterCheckout() {
-        String bookname = "Harry potter1";
-        bibliotecaUtilityTestable.checkout(bookname);
+        String bookName = "Harry potter1";
+        bibliotecaUtilityTestable.checkout(bookName);
         ArrayList<Book> bookList = bibliotecaUtilityTestable.getBookList();
         assertThat(bookList.toString(), not(containsString("Harry potter1")));
     }
@@ -89,6 +92,16 @@ public class BibliotecaUtilityTest {
         String expectMessage = "That book is not available.";
         bibliotecaUtilityTestable.checkout("UnexsitBook");
         assertThat(outContent.toString(), is(expectMessage));
+    }
+
+    @Test
+    public void shouldAddTheBookAfterItIsReturned() {
+        String bookName = "Harry potter1";
+        ArrayList<Book> bookList = bibliotecaUtilityTestable.getBookList();
+        bibliotecaUtilityTestable.checkout(bookName);
+        assertThat(bookList.toString(), not(containsString("Harry potter1")));
+        bibliotecaUtilityTestable.returnBook(bookName);
+        assertThat(bookList.toString(), containsString("Harry potter1"));
     }
 
 
