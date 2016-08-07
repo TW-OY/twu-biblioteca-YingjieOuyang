@@ -82,4 +82,11 @@ public class BibliotecaUtilityTest {
         assertThat(outContent.toString(), is(expectMessage));
     }
 
+    @Test
+    public void shouldShowUnsuccessfulMessageAfterFailedCheckout() {
+        String expectMessage = "That book is not available.";
+        bibliotecaUtilityTestable.showFailedCheckOutMessage();
+        assertThat(outContent.toString(), is(expectMessage));
+    }
+
 }
