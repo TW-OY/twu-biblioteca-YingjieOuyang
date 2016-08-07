@@ -54,16 +54,11 @@ public class BibliotecaUtility {
         for(Book book : bookList) {
             if(book.getName() == bookname) {
                 bookList.remove(book);
+                System.out.print("Thank you! Enjoy the book");
                 return;
             }
         }
-    }
-
-    public void showCheckedOutMessage() {
-        System.out.print("Thank you! Enjoy the book");
-    }
-
-    public void showFailedCheckOutMessage() {
         System.out.print("That book is not available.");
     }
+
 }
