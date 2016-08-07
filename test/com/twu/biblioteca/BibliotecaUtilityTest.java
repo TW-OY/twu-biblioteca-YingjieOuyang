@@ -20,10 +20,12 @@ import static org.junit.Assert.assertThat;
 
 public class BibliotecaUtilityTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    BibliotecaUtility bibliotecaUtilityTestable = new BibliotecaUtility();
+    BibliotecaUtility bibliotecaUtilityTestable ;
 
     @Before
-    public void setUpOutStream(){
+    public void setUpOutStream()
+    {
+        bibliotecaUtilityTestable = new BibliotecaUtility();
         System.setOut(new PrintStream(outContent));
     }
 
@@ -78,15 +80,16 @@ public class BibliotecaUtilityTest {
     @Test
     public void shouldShowSuccessfulMessageAfterCheckout() {
         String expectMessage = "Thank you! Enjoy the book";
-        bibliotecaUtilityTestable.showCheckedOutMessage();
+        bibliotecaUtilityTestable.checkout("Harry potter1");
         assertThat(outContent.toString(), is(expectMessage));
     }
 
     @Test
-    public void shouldShowUnsuccessfulMessageAfterFailedCheckout() {
+    public void shouldPrintUnsuccessfulMessageAfterFailedCheckout() {
         String expectMessage = "That book is not available.";
-        bibliotecaUtilityTestable.showFailedCheckOutMessage();
+        bibliotecaUtilityTestable.checkout("UnexsitBook");
         assertThat(outContent.toString(), is(expectMessage));
     }
+
 
 }
